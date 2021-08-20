@@ -1,0 +1,42 @@
+<div class="stage">
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Transformer name</mat-label>
+        <input [(ngModel)]="name" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="status">
+            <mat-option value="OK">OK</mat-option>
+            <mat-option value="INJURED">INJURED</mat-option>
+            <mat-option value="MIA">MIA</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Vehicle Group</mat-label>
+        <mat-select [ngModel]="selectedGroup" (ngModelChange)="changeTypes($event)">
+            <mat-option value="Air">Air</mat-option>
+            <mat-option value="Land">Land</mat-option>
+            <mat-option value="Sea">Sea</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Vehicle type</mat-label>
+        <mat-select [ngModel]="selectedType" (ngModelChange)="changeModels($event)">
+            <mat-option *ngFor="let type of types" [value]="type">{{type}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Vehicle model</mat-label>
+        <mat-select [(ngModel)]="selectedModel">
+            <mat-option *ngFor="let model of models" [value]="model">{{model}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="bg">
+        <mat-label>Gear</mat-label>
+        <input [(ngModel)]="gear" matInput>
+    </mat-form-field>
+    
+    <button mat-flat-button color="warn" (click)="addTransformer()">Save</button>
+    <button mat-flat-button [routerLink]="['']">Home</button>
+    <router-outlet></router-outlet>
+</div>
